@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Drug Management System</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Drug Management System</h1>
+		<hr>
+		<h2>Save Drug</h2>
+
+		<form action="#" th:action="@{/saveDrug}" th:object="${drug}"
+			method="POST">
+				<input type="text" th:field="*{name}"
+				placeholder="Drug Name" class="form-control mb-4 col-4">
+				
+				<input type="number" step=".01" th:field="*{price}"
+				placeholder="`Price" class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{description}"
+				placeholder="Description" class="form-control mb-4 col-4">
+
+				<input type="text" th:field="*{prescription_required}"
+					   placeholder="Prescription Required" class="form-control mb-4 col-4">
+
+				<input type="text" th:field="*{standard_dosage}"
+				   placeholder="Standard Dosage" class="form-control mb-4 col-4">
+				
+				<button type="submit" class="btn btn-info col-2"> Save Drug</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/}"> Back to Drug List</a>
+	</div>
+</body>
+</html>

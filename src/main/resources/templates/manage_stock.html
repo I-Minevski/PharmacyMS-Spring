@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Drug Stock</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2">
+  <h1>Manage Drug Stock</h1>
+  <!-- Warning message display -->
+  <div th:if="${warningMessage}">
+    <span th:text="${warningMessage}" class="text-danger"></span>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Drug Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Stock Quantity</th>
+      <th>Order</th>
+      <th>Sell</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td th:text="${drug.name}"></td>
+      <td th:text="${drug.price}"></td>
+      <td th:text="${drug.description}"></td>
+      <td th:text="${drug.stockQuantity}"></td>
+      <td>
+        <form th:action="@{/orderDrug/{id}(id=${drug.id})}" method="post">
+          <input type="number" name="quantity" min="1" required>
+          <button type="submit" class="btn btn-primary">Order</button>
+        </form>
+      </td>
+      <td>
+        <form th:action="@{/sellDrug/{id}(id=${drug.id})}" method="post">
+          <input type="number" name="quantity" min="1" max="${drug.stockQuantity}" required>
+          <button type="submit" class="btn btn-danger">Sell</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
