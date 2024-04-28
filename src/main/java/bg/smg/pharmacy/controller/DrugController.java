@@ -1,7 +1,8 @@
-package net.javaguides.springboot.controller;
+package bg.smg.pharmacy.controller;
 
 import java.util.List;
 
+import bg.smg.pharmacy.model.Drug;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import net.javaguides.springboot.model.Drug;
-import net.javaguides.springboot.service.DrugService;
+import bg.smg.pharmacy.service.DrugService;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -97,7 +97,7 @@ public class DrugController {
 	@PostMapping("/orderDrug/{id}")
 	public String orderDrug(@PathVariable("id") long id, @RequestParam("quantity") int quantity) {
 		drugService.orderDrug(id, quantity);
-		return "redirect:/viewStock/" + id;
+		return "redirect:/";
 	}
 
 	@PostMapping("/sellDrug/{id}")

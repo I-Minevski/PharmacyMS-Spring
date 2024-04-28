@@ -1,10 +1,9 @@
-package net.javaguides.springboot.service;
+package bg.smg.pharmacy.service;
 
 import java.util.List;
 
+import bg.smg.pharmacy.model.Drug;
 import org.springframework.data.domain.Page;
-
-import net.javaguides.springboot.model.Drug;
 
 public interface DrugService {
 	List<Drug> getAllDrugs();
